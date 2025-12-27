@@ -15,7 +15,7 @@
 <body>
 <a-scene
   embedded
-  arjs="sourceType: webcam; debugUIEnabled: false;"
+  arjs="sourceType: webcam; debugUIEnabled: true;"
   vr-mode-ui="enabled: false">
 
   <a-assets>
@@ -23,6 +23,7 @@
       id="avatarVideo"
       src="video.mp4"
       loop
+      muted
       preload="auto"
       playsinline
       webkit-playsinline>
@@ -40,8 +41,8 @@
       src="#avatarVideo"
       width="1"
       height="1.8"
-      position="0 0.9 0"
-      rotation="-90 0 0">
+      position="0 0.5 0"
+      rotation="0 0 0">
     </a-video>
 
   </a-marker>
@@ -58,5 +59,6 @@
 
 </body>
 </html>
+
 
 
