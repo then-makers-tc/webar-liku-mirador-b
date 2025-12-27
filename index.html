@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>WebAR Test Hiro</title>
+  <title>WebAR Video Test</title>
 
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.5/aframe/build/aframe-ar.min.js"></script>
@@ -15,12 +15,19 @@
 <body>
 <a-scene
   embedded
-  arjs="sourceType: webcam; debugUIEnabled: true;"
+  arjs="sourceType: webcam;"
   vr-mode-ui="enabled: false">
 
-  <!-- MARKER DE PRUEBA -->
   <a-marker preset="hiro">
-    <a-box position="0 0.5 0" material="color: red;"></a-box>
+
+    <a-video
+      src="video.mp4"
+      width="1"
+      height="1.8"
+      position="0 0.5 0"
+      rotation="0 0 0">
+    </a-video>
+
   </a-marker>
 
   <a-entity camera></a-entity>
