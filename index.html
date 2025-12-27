@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>WebAR Video</title>
+  <title>WebAR Test Hiro</title>
 
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.2.1/aframe/build/aframe-ar.js"></script>
@@ -18,47 +18,17 @@
   arjs="sourceType: webcam; debugUIEnabled: true;"
   vr-mode-ui="enabled: false">
 
-  <a-assets>
-    <video
-      id="avatarVideo"
-      src="video.mp4"
-      loop
-      muted
-      preload="auto"
-      playsinline
-      webkit-playsinline>
-    </video>
-  </a-assets>
+  <!-- MARKER HIRO DE PRUEBA -->
+  <a-marker preset="hiro">
 
-  <a-marker
-    type="pattern"
-    url="marker.patt"
-    emitevents="true"
-    id="marker">
-
-
-    <a-video
-      src="#avatarVideo"
-      width="1"
-      height="1.8"
+    <a-box
       position="0 0.5 0"
-      rotation="0 0 0">
-    </a-video>
+      material="color: red;">
+    </a-box>
 
   </a-marker>
 
   <a-entity camera></a-entity>
 </a-scene>
-
-<script>
-  document.body.addEventListener('click', () => {
-    const video = document.querySelector('#avatarVideo');
-    if (video.paused) video.play();
-  });
-</script>
-
 </body>
 </html>
-
-
-
