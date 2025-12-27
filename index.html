@@ -1,10 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>TEST</title>
+  <meta charset="utf-8" />
+  <title>WebAR Video</title>
+
+  <!-- VERSIONES QUE YA SABEMOS QUE FUNCIONAN -->
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ar.js@3.3.2/aframe/build/aframe-ar.min.js"></script>
+
+  <style>
+    body { margin: 0; overflow: hidden; }
+  </style>
 </head>
-<body style="background:black;color:white;font-size:40px">
-  SI VES ESTO, GITHUB PAGES FUNCIONA
+
+<body>
+<a-scene
+  embedded
+  vr-mode-ui="enabled: false"
+  arjs="sourceType: webcam; debugUIEnabled: false;">
+
+  <a-assets>
+    <video
+      id="avatarVideo"
+      src="video.mp4"
+      loop
+      muted
+      playsinline
+      webkit-playsinline
+      crossorigin="anonymous">
+    </video>
+  </a-assets>
+
+  <!-- USAMOS HIRO, NO TU PATT, PARA ESTABILIZAR -->
+  <a-marker preset="hiro">
+
+    <a-video
+      src="#avatarVideo"
+      width="1"
+      height="1.8"
+      position="0 0.9 0"
+      rotation="-90 0 0">
+    </a-video>
+
+  </a-marker>
+
+  <a-entity camera></a-entity>
+</a-scene>
+
+<script>
+  document.body.addEventListener('click', () => {
+    const v = document.querySelector('#avatarVideo');
+    if (v && v.paused) v.play();
+  });
+</script>
+
 </body>
 </html>
