@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>WebAR Video</title>
+
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/2.2.1/aframe/build/aframe-ar.js"></script>
+
+  <style>
+    body { margin: 0; overflow: hidden; }
+  </style>
+</head>
+
+<body>
+<a-scene
+  embedded
+  arjs="sourceType: webcam; debugUIEnabled: false;"
+  vr-mode-ui="enabled: false">
+
+  <a-assets>
+    <video
+      id="avatarVideo"
+      src="assets/video/avatar.mp4"
+      loop
+      preload="auto"
+      playsinline
+      webkit-playsinline>
+    </video>
+  </a-assets>
+
+  <a-marker
+    type="pattern"
+    url="assets/markers/marker.patt"
+    raycaster="objects: .clickable"
+    emitevents="true">
+
+    <a-video
+      src="#avatarVideo"
+      width="1"
+      height="1.8"
+      position="0 0.9 0"
+      rotation="-90 0 0">
+    </a-video>
+
+  </a-marker>
+
+  <a-entity camera></a-entity>
+</a-scene>
+
+<script>
+  document.body.addEventListener('click', () => {
+    const video = document.querySelector('#avatarVideo');
+    if (video.paused) video.play();
+  });
+</script>
+
+</body>
+</html>
